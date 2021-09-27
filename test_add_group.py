@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from selenium.webdriver.firefox.webdriver import Webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+import time, unittest
 
-class TestAddGroup(unittest.TestCase):
+def is_alert_present(wd):
+    try:
+        wd.switch_to_alert().text
+        return True
+    except:
+        return False
+
+
+class test_add_group(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
