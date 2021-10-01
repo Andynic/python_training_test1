@@ -14,7 +14,7 @@ def is_alert_present(wd):
         return False
 
 
-class TestAddGroup(unittest.TestCase):
+class test_add_group(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
