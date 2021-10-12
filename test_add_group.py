@@ -86,77 +86,90 @@ class test_add_group(unittest.TestCase):
 
         def test_add_contacts(self):
             wd = self.wd
-            # open add new page
-            wd.get("http://localhost/addressbook/edit.php")
-            # login
-            wd.find_element_by_name("user").click()
-            wd.find_element_by_name("user").clear()
-            wd.find_element_by_name("user").send_keys("admin")
-            wd.find_element_by_name("pass").clear()
-            wd.find_element_by_name("pass").send_keys("secret")
-            wd.find_element_by_xpath("//input[@value='Login']").click()
+            self.open_add_new_page(wd)
+            self.login_2(wd, username="admin", password="secret")
+            self.fill_contacts_firm(wd, "Test", "test1", "test2", "test3", "test4", "test5", "1111111", "facebook",
+                                    "222222", "t@t.ru", "8", "August", "1989", "10", "October", "1989", "Moscow",
+                                    "Moscow")
+            self.logout_2(wd)
+
+        def logout_2(self, wd):
+            # logout 2
+            wd.find_element_by_link_text("Logout").click()
+
+        def fill_contacts_firm(self, wd, firstname, middlename, lastname, nickname, title, home, mobile, work, fax,
+                               email, bday, bmonth, byear, aday, amonth, ayear, adress2, phone2):
             # fill contacts firm
             wd.find_element_by_xpath("//div[@id='content']/form/label[3]").click()
             wd.find_element_by_name("firstname").click()
             wd.find_element_by_name("firstname").clear()
-            wd.find_element_by_name("firstname").send_keys("Test")
+            wd.find_element_by_name("firstname").send_keys(firstname)
             wd.find_element_by_name("middlename").clear()
-            wd.find_element_by_name("middlename").send_keys("test1")
+            wd.find_element_by_name("middlename").send_keys(middlename)
             wd.find_element_by_name("lastname").click()
             wd.find_element_by_name("lastname").clear()
-            wd.find_element_by_name("lastname").send_keys("test2")
+            wd.find_element_by_name("lastname").send_keys(lastname)
             wd.find_element_by_name("nickname").click()
             wd.find_element_by_name("nickname").clear()
-            wd.find_element_by_name("nickname").send_keys("test3")
+            wd.find_element_by_name("nickname").send_keys(nickname)
             wd.find_element_by_name("title").click()
             wd.find_element_by_name("title").clear()
-            wd.find_element_by_name("title").send_keys("test4")
+            wd.find_element_by_name("title").send_keys(title)
             wd.find_element_by_name("company").click()
             wd.find_element_by_name("home").click()
             wd.find_element_by_name("home").clear()
-            wd.find_element_by_name("home").send_keys("test5")
+            wd.find_element_by_name("home").send_keys(home)
             wd.find_element_by_name("mobile").click()
             wd.find_element_by_name("mobile").clear()
-            wd.find_element_by_name("mobile").send_keys("1111111")
+            wd.find_element_by_name("mobile").send_keys(mobile)
             wd.find_element_by_name("work").click()
             wd.find_element_by_name("work").clear()
-            wd.find_element_by_name("work").send_keys("facebook")
+            wd.find_element_by_name("work").send_keys(work)
             wd.find_element_by_name("fax").click()
             wd.find_element_by_name("fax").clear()
-            wd.find_element_by_name("fax").send_keys("222222")
+            wd.find_element_by_name("fax").send_keys(fax)
             wd.find_element_by_name("email").click()
             wd.find_element_by_name("email").clear()
-            wd.find_element_by_name("email").send_keys("t@t.ru")
+            wd.find_element_by_name("email").send_keys(email)
             wd.find_element_by_name("bday").click()
-            Select(wd.find_element_by_name("bday")).select_by_visible_text("8")
+            Select(wd.find_element_by_name("bday")).select_by_visible_text(bday)
             wd.find_element_by_xpath("//option[@value='8']").click()
             wd.find_element_by_name("bmonth").click()
-            Select(wd.find_element_by_name("bmonth")).select_by_visible_text("August")
+            Select(wd.find_element_by_name("bmonth")).select_by_visible_text(bmonth)
             wd.find_element_by_xpath("//option[@value='August']").click()
             wd.find_element_by_name("byear").click()
             wd.find_element_by_name("byear").clear()
-            wd.find_element_by_name("byear").send_keys("1989")
+            wd.find_element_by_name("byear").send_keys(byear)
             wd.find_element_by_name("aday").click()
-            Select(wd.find_element_by_name("aday")).select_by_visible_text("10")
+            Select(wd.find_element_by_name("aday")).select_by_visible_text(aday)
             wd.find_element_by_xpath("//div[@id='content']/form/select[3]/option[12]").click()
             wd.find_element_by_name("amonth").click()
-            Select(wd.find_element_by_name("amonth")).select_by_visible_text("October")
+            Select(wd.find_element_by_name("amonth")).select_by_visible_text(amonth)
             wd.find_element_by_xpath("//div[@id='content']/form/select[4]/option[11]").click()
             wd.find_element_by_name("ayear").click()
             wd.find_element_by_name("ayear").clear()
-            wd.find_element_by_name("ayear").send_keys("1989")
+            wd.find_element_by_name("ayear").send_keys(ayear)
             wd.find_element_by_name("theform").click()
             wd.find_element_by_name("address2").click()
             wd.find_element_by_name("address2").clear()
-            wd.find_element_by_name("address2").send_keys("Moscow")
+            wd.find_element_by_name("address2").send_keys(adress2)
             wd.find_element_by_name("phone2").click()
             wd.find_element_by_name("phone2").clear()
-            wd.find_element_by_name("phone2").send_keys("Moscow")
+            wd.find_element_by_name("phone2").send_keys(phone2)
             wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-            # logout
-            wd.find_element_by_link_text("Logout").click()
 
+        def login_2(self, wd, username, pasword):
+            # login 2
+            wd.find_element_by_name("user").click()
+            wd.find_element_by_name("user").clear()
+            wd.find_element_by_name("user").send_keys(username)
+            wd.find_element_by_name("pass").clear()
+            wd.find_element_by_name("pass").send_keys(pasword)
+            wd.find_element_by_xpath("//input[@value='Login']").click()
 
+        def open_add_new_page(self, wd):
+            # open add new page
+            wd.get("http://localhost/addressbook/edit.php")
 
     def is_element_present(self, how, what):
         try:
