@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, re
-from contacts import Contacts
+from contacts import Contact
 
 
 class test_add_contacts(unittest.TestCase):
@@ -15,8 +15,11 @@ class test_add_contacts(unittest.TestCase):
         wd = self.wd
         self.open_create_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.fill_contact_firm(wd, Contacts(firstname="Test", middlename="test1", lastname="test2", nickname="test3", title="test4", home="test5", mobile="1111111", phone_work="7890", fax="222222",
-                               email="t@t.ru", byear="1989", ayear="1989", address2="Moscow", phone2="54321"))
+        self.fill_contact_firm(wd, Contact(firstname="Test", middlename="test1", lastname="test2", nickname="test3",
+                                           title="test4", phone_home="495590", mobile="1111111", phone_work="7890",
+                                           fax="222222",
+                                           email="t@t.ru", byear="1989", ayear="1989", address2="Moscow",
+                                           phone2="54321"))
         self.logout(wd)
 
     def logout(self, wd):
@@ -43,7 +46,7 @@ class test_add_contacts(unittest.TestCase):
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contacts.home)
+        wd.find_element_by_name("home").send_keys(contacts.phone_home)
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(contacts.mobile)
