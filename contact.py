@@ -5,12 +5,12 @@ class Contact_add:
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(60)
 
-        def logout(self):
+    def logout(self):
             # logout
             wd = self.wd
             wd.find_element_by_link_text("Logout").click()
 
-        def fill_contact_firm(self,contacts):
+    def fill_contact_firm(self,contacts):
             # fill contact firm
             wd = self.wd
             wd.find_element_by_xpath("//div[@id='content']/form/label[3]").click()
@@ -59,7 +59,7 @@ class Contact_add:
             wd.find_element_by_name("phone2").send_keys(contacts.phone2)
             wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-        def login(self, username, password):
+    def login(self, username, password):
             # login
             wd = self.wd
             wd.find_element_by_name("user").click()
@@ -69,10 +69,10 @@ class Contact_add:
             wd.find_element_by_name("pass").send_keys(password)
             wd.find_element_by_xpath("//input[@value='Login']").click()
 
-        def open_create_page(self):
+    def open_create_page(self):
             # open create page
             wd = self.wd
             wd.get("http://localhost/addressbook/edit.php")
 
-        def destroy(self):
+    def destroy(self):
             self.wd.quit()
