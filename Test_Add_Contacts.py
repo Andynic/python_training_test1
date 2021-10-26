@@ -10,8 +10,8 @@ def app(request):
     return fixture
 
 def test_add_contacts(app):
-    app.open_create_page()
     app.login(username="admin", password="secret")
+    app.open_create_page()
     app.fill_contact_firm(Contact(firstname="Test", middlename="test1", lastname="test2", nickname="test3",
                                            title="test4", phone_home="495590", mobile="1111111", phone_work="7890",
                                            fax="222222",
