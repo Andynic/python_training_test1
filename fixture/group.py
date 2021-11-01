@@ -8,6 +8,7 @@ class GroupHelper:
         # open groups page
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
+        wd.find_element_by_xpath('//form[@action="/addressbook/group.php"]')
 
     def create(self, group):
         wd = self.app.wd
@@ -43,3 +44,17 @@ class GroupHelper:
         # return to groups page
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
+
+    def edit_group(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # go to the edit form
+        wd.find_element_by_name("edit").click()
+        # rename group name
+        wd.find_element_by_name("group_name").clear()
+        wd.find_element_by_name("group_name").send_keys("test_edit_group")
+        # update group name
+        wd.find_element_by_name("update")
+        self.return_to_groups_page()
