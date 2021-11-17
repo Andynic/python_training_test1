@@ -70,6 +70,6 @@ class ContactHelper:
         wd.find_element_by_xpath('//img[@title="Edit"]').click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("Test_edit_Firstname")
-        wd.find_element_by_name("Update")
+        wd.find_element_by_name("update")
         wd.find_element_by_link_text("home page").click()
         wd.find_element_by_id("maintable")
